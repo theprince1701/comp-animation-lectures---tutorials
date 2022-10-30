@@ -72,6 +72,7 @@ public class PathEditor : Editor
         {
             Undo.RecordObject(_creator, "Add Segment");
             _path.AddSegment(mousePos);
+            _creator.speedControl.UpdateSamples();
         }
 
         if (guiEvent.type == EventType.MouseDown && guiEvent.button == 0 && guiEvent.control)
@@ -93,6 +94,7 @@ public class PathEditor : Editor
             {
                 Undo.RecordObject(_creator, "Delete Segment");
                 _path.DeleteSegment(closestIndex);
+                Undo.RecordObject(_creator, "Add Segment");
             }
         }
     }
@@ -119,6 +121,7 @@ public class PathEditor : Editor
             {
                 Undo.RecordObject(_creator, "Move Point");
                 _path.MovePoint(i, newPos);
+                _creator.speedControl.UpdateSamples();
             }
         }
     }

@@ -14,10 +14,10 @@ public class Path
     {
         points = new List<Vector3>()
         {
-            centre + Vector3.left,
-            centre + (Vector3.left + Vector3.up) * 0.5f,
-            centre + (Vector3.right + Vector3.down) * 0.5f,
-            centre + Vector3.left
+            centre + Vector3.left * 5.0f,
+            centre + (Vector3.left + Vector3.up) * 10.0f,
+            centre + (Vector3.right + Vector3.down) * 10.5f,
+            centre + Vector3.left * 5.0f
         };
     }
 
@@ -46,8 +46,8 @@ public class Path
 
     public void AddSegment(Vector3 anchorPos)
     {
-        points.Add(points[^1] * 2 - points[^2]);
-        points.Add((points[^1] + anchorPos) * 0.5f);
+        points.Add(points[points.Count-1] * 2 - points[points.Count-2]);
+        points.Add((points[points.Count-1] + anchorPos) * 0.5f);
         points.Add(anchorPos);
 
         if (autoSetControlPoints)
@@ -143,7 +143,7 @@ public class Path
 
         if (isClosed)
         {
-            points.Add(points[^1] * 2 - points[^2]);
+            points.Add(points[points.Count-1] * 2 - points[points.Count-2]);
             points.Add(points[0] * 2 - points[1]);
 
             if (autoSetControlPoints)
@@ -230,6 +230,6 @@ public class Path
         if (isClosed) return;
         
         points[1] = (points[0] + points[2]) * 0.5f;
-        points[^2] = (points[^1] + points[^3]) * 0.5f;
+        points[points.Count-2] = (points[points.Count-1] + points[points.Count-3]) * 0.5f;
     }
 }

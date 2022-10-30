@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class PathCreator : MonoBehaviour
 {
-     public Path Path { get; private set; }
+    
+    public Path Path { get; private set; }
+
+    public SpeedControlFollowCurve speedControl;
 
      private void Awake()
      {

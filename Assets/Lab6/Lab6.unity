@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformToMove: {fileID: 1540662219}
-  speed: 1
+  speed: 5
   sampleRate: 16
 --- !u!1 &922839998
 GameObject:
